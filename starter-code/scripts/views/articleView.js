@@ -42,6 +42,16 @@
   };
 
   // COMMENT: What does this method do?  What is it's execution path?
+
+  /* When the filter selector is CHANGED, we create the variable resource,
+  and store the id of the selected selector and remove '-filter' and replace it
+  with NOTHING. This can only be done ONCE because of the jQuery method .one().
+  Then we set the value of the filter and selectors (by identifying the
+  selected selector's parent, its siblings and its children's values and
+  setting them to NOTHING.) causing the filter to be reset when a
+  "new page" navigation happens (even though a page refresh did not actually
+  occur).
+  */
   articleView.handleFilters = function() {
     $('#filters').one('change', 'select', function() {
       var resource = this.id.replace('-filter', '');
