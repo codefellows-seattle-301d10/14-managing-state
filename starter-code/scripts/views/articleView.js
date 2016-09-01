@@ -16,6 +16,13 @@
   };
 
   // COMMENT: What does this method do?  What is it's execution path?
+  /* first we declare a variable options. Then we declare a variable template
+  to which we assign the value of the compiled-by-handlebars option template
+  we then assign to our options variable the template value of the author that
+  is obtained when mapping over the Article.allAuthors array.
+
+  Its execution path is that it runs when the articleView.index function
+  is run. The articleView.handleFilters function will run immediately after.*/
   articleView.populateFilters = function() {
     var options;
     var template = Handlebars.compile($('#option-template').text());
