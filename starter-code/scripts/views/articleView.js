@@ -34,7 +34,7 @@
     });
   };
 
-  // COMMENT: This method keeps you from selecting both an author filter and a category filter, or multiple author or category filters at the same time, in your drop down menus. It captures the filters id, the section containing the author-filter and category-filter html elements, and applies the one method. The one method attaches a handler to an event for each element, that will only execute once per event parameter. Here, we are attaching a function on change or selection of the filters id. This function replaces the id of the #category-filter with a #category + empty string id, and saves it as a resource variable, which page.js uses to populate the url, along a +. It then looks to the cousin elements of whatever filter was selected, and replaces its ID with an empty string. This is essentially a query, just without the ? 
+  // COMMENT: This method keeps you from selecting both an author filter and a category filter, or multiple author or category filters at the same time, in your drop down menus. It captures the filters id, the section containing the author-filter and category-filter html elements, and applies the one method. The one method attaches a handler to an event for each element, that will only execute once per event parameter. Here, we are attaching a function on change or selection of the filters id. This function replaces the id of the #category-filter with a #category + empty string id, and saves it as a resource variable, which page.js uses to populate the url, and replace any whitespace with a plus sign (like between author name, for example). It then looks to the cousin elements of whatever filter was selected, and replaces its ID with an empty string. This is essentially a query, just without the ?
 
   articleView.handleFilters = function() {
     $('#filters').one('change', 'select', function() {
@@ -84,7 +84,8 @@
      });
    }; */
 
-  // COMMENT: What does this method do?  What is it's execution path?
+  // COMMENT: This method renders the index.html page, by showing the articles section (using the articles id) while hiding that section's siblings (the about section and blog-stats section). When we click on read on, the url changes and the state of the data is changed, such that all article instances are removed, except for the one we clicked on, which is rendered. The functions populateFilters and handleFilters are also called, and each article is truncated. 
+
   articleView.index = function(articles) {
     $('#articles').show().siblings().hide();
 

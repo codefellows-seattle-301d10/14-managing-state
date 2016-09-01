@@ -11,7 +11,8 @@
     }
   };
 
-  // COMMENT: What does this method do?  What is it's execution path?
+  // This method also runs callbacks via next() in order to persist state across from one use to the next. State is allowed to be persisted via the context object.
+  
   articleController.loadById = function(ctx, next) {
     var articleData = function(article) {
       ctx.articles = article;
