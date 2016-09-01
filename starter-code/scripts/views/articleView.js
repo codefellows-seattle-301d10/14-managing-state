@@ -15,7 +15,7 @@
     return template(article);
   };
 
-  // COMMENT: What does this method do?  What is it's execution path?
+  // COMMENT: This method populates the author and categories drop down menus with the value of the authors and catgeories properties of each object in our hackerIpsum.json file (via the table created in our article.js model). The map function cycles through each of those article objects, and returns the value of the author and category properties of those objects. It then appends those values to the template using the handlebars compile method. It's essentially abstracting the options and the values and appending them to a specific handlebars template (#author-filter and #category-filter). The allCategories method is a little different. Although the allAuthors and allCategories methods in article.js are both selecting for distinct author and category names, they do so in different ways. In our allAuthors method, we capture distinct values using jQuery (as an example of a synchronous, functional programming approach to getting unique data), while we use a SQL DISTINCT call to filter our categories. Here, we use two different methods of compiling and rendering our authors and categories, too.
   articleView.populateFilters = function() {
     var options;
     var template = Handlebars.compile($('#option-template').text());
