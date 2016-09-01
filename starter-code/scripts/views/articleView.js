@@ -15,7 +15,20 @@
     return template(article);
   };
 
-  // COMMENT: What does this method do?  What is it's execution path?
+  // COMMENT: DONE What does this method do?  What is it's execution path?
+  //This function sets up two filters by populating them with two different arays consisting of author names and category names.
+  //Category names are pulled in via SQL and appended to the DOM.
+  //Author names are pulled in from local data and appended to the DOM.
+
+  //EXECUTION PATH
+  //1. We initiate "options" as an empty variable.
+  //2. We store a function into a variable called "template" which was returned by the Handlebars.compile() method.
+  //3. For every author in the array, the "template" function is run, therefore wrapping each author name in the template script.
+  //4. We use jQuery to append the list of authors to the selected element with the ID of "author-filter".
+  //5. For every category in the array, the "template" function is run, therefore wrapping each category name in the template script.
+  //6. We use jQuery to append the list of categories to the selected element with the ID of "category-filter."
+
+
   articleView.populateFilters = function() {
     var options;
     var template = Handlebars.compile($('#option-template').text());
@@ -34,11 +47,21 @@
     });
   };
 
-  // COMMENT: What does this method do?  What is it's execution path?
+  // COMMENT: DONE What does this method do?  What is it's execution path?
+
+  //This function makes an event listener on both filters. jQuery selects the element #filters and then adds an event listener onto the "select" tags.
+
+  //The value of the other filter is set to blank.
+
+
+  //A variable called "resource" stores a string that is either "category" or "author". This is a result of the .replace() method that replaces the "-filter" part of the ID name of "this" with nothing, essentially removing it.
+
+  //A new route is set up using the resource variable and Regex makes it URL compatible. This results in the URL being author/"authorName" or category/"categoryName".
+
   articleView.handleFilters = function() {
     $('#filters').one('change', 'select', function() {
-      var resource = this.id.replace('-filter', '');
       $(this).parent().siblings().children().val('');
+      var resource = this.id.replace('-filter', '');
       page('/' + resource + '/' +
       // Replace any/all whitespace with a '+' sign
         $(this).val().replace(/\W+/g, '+')
@@ -83,7 +106,20 @@
      });
    }; */
 
-  // COMMENT: What does this method do?  What is it's execution path?
+  // COMMENT: DONE What does this method do?  What is it's execution path?
+
+  //This function renders the index page and then calls two more functions.
+
+  // EXECUTION PATH
+  //1.First the #articles section is shown while its sibling sections are hidden.
+  //2. The articles in the #articles section are removed.
+  //3. We iterate through each article.
+  //4. On each iterated article, we call the render(); function on it and append it to #articles.
+  //5. The render(); function renders the full articles. It returns the HTML that gets appended. The render(); function also calculates how long ago the article was published and indicates if it was an unpublished draft.
+  //6. articleView.populateFilters(); is invoked.
+  //7. articleView.handleFilters(); is invoked.
+
+
   articleView.index = function(articles) {
     $('#articles').show().siblings().hide();
 
