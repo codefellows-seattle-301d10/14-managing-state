@@ -34,7 +34,8 @@
     });
   };
 
-  // COMMENT: What does this method do?  What is it's execution path?
+  // COMMENT: This method keeps you from selecting both an author filter and a category filter, or multiple author or category filters at the same time, in your drop down menus. It captures the filters id, the section containing the author-filter and category-filter html elements, and applies the one method. The one method attaches a handler to an event for each element, that will only execute once per event parameter. Here, we are attaching a function on change or selection of the filters id. This function replaces the id of the #category-filter with a #category + empty string id, and saves it as a resource variable, which page.js uses to populate the url, along a +. It then looks to the cousin elements of whatever filter was selected, and replaces its ID with an empty string. This is essentially a query, just without the ? 
+
   articleView.handleFilters = function() {
     $('#filters').one('change', 'select', function() {
       var resource = this.id.replace('-filter', '');
