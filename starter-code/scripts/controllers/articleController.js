@@ -12,6 +12,17 @@
   };
 
   // COMMENT: What does this method do?  What is it's execution path?
+
+  /* loadById first runs the Article.findWhere function to get our data. We're
+  pulling everything from the sql database of articles WHERE id = the id of
+  the context (current article) that is being passed in. Then we run
+  articleData, which is defined above. articleData attaches the value of the
+  Context.article to the value of the placeholder article. Then we run the
+  next() function, which is articleController.index, as described by the
+   routes.js file.
+
+   This function's execution path is that it runs when page('/article/:id' runs.
+  */
   articleController.loadById = function(ctx, next) {
     var articleData = function(article) {
       ctx.articles = article;
