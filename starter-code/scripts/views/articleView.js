@@ -51,6 +51,10 @@
   setting them to NOTHING.) causing the filter to be reset when a
   "new page" navigation happens (even though a page refresh did not actually
   occur).
+
+  This method's execution path is being run inside the articleView.index
+  function and is immediately called after articleView.populateFilters
+  is run.
   */
   articleView.handleFilters = function() {
     $('#filters').one('change', 'select', function() {
@@ -101,6 +105,22 @@
    }; */
 
   // COMMENT: What does this method do?  What is it's execution path?
+
+  /*This method shows the article section and hides all other sibling sections.
+    Then it runs a forEach on each article object being passed in (after it
+    has gone through the rest of the code to put it into a format that is ready
+    for the user to access it) to append each article to the newly-shown
+    #article section. articleView.populateFilterts and articleView.handleFilters
+    is invoked immediately after that. The detailed functionality of those two
+    methods is described above.
+
+    Finally, we have a new teaser setter method. If there are more than one
+    articles in the #article section, apply the logic to all of the articles
+    and hide all but the first two elements.
+
+    This function runs when the articleController.index function runs, but only
+    if context.articles exists.
+  */
   articleView.index = function(articles) {
     $('#articles').show().siblings().hide();
 
