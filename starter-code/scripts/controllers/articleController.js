@@ -11,8 +11,8 @@
     }
   };
 
-  // This method also runs callbacks via next() in order to persist state across from one use to the next. State is allowed to be persisted via the context object.
-  
+  // This method also runs callbacks via next() in order to persist state from one use to the next. State is allowed to be persisted via the context object. This method loads a specific article when read more is clicked. The path of that article is /articles/id.  It finds the ID, puts it into the context object's params property, and users articleData to render the article. 
+
   articleController.loadById = function(ctx, next) {
     var articleData = function(article) {
       ctx.articles = article;
