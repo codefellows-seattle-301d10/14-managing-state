@@ -21,7 +21,7 @@
     Article.findWhere('id', ctx.params.id, articleData);
   };
 
-  // This method is the same as loadById, except it loads specific articles by the author property of the context object, rather than by id. The findWhere function finds the authorName property on the context object, and replaces any whitespace with a + sign, such that the URL path will be /author/firstname+lastname. 
+  // This method is the same as loadById, except it loads specific articles by the author property of the context object, rather than by id. The findWhere function finds the author property on the context object, and replaces any whitespace with a + sign, such that the URL path will be /author/firstname+lastname.
   articleController.loadByAuthor = function(ctx, next) {
     var authorData = function(articlesByAuthor) {
       ctx.articles = articlesByAuthor;
@@ -33,7 +33,7 @@
     );
   };
 
-  // COMMENT: What does this method do?  What is it's execution path?
+  // This method acts in the same way as the previous method, except that it loads the category property of the context object instead of the author property, and the URL file path becomes /category/categoryname.
   articleController.loadByCategory = function(ctx, next) {
     var categoryData = function(articlesInCategory) {
       ctx.articles = articlesInCategory;
