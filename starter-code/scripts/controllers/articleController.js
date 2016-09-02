@@ -43,7 +43,7 @@
     Article.findWhere('category', ctx.params.categoryName, categoryData);
   };
 
-  // COMMENT: What does this method do?  What is it's execution path?
+  // Basically, what this method is doing is checking to see whether there is any articles content loaded. If so, it tells the interpreter to load that content. If not, it tells the interpreter to go fetch that content from the "server" using the fetchAll function, then load, and finally set the Article.allArticles array on the articles property of the context object, so that data will persist on the next load. 
   articleController.loadAll = function(ctx, next) {
     var articleData = function(allArticles) {
       ctx.articles = Article.allArticles;
