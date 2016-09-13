@@ -10,6 +10,7 @@
     <link rel="stylesheet" href="/styles/layout.css">
     <link rel="stylesheet" href="/styles/modules.css">
     <link rel="icon" type="image/x-icon" href="https://avatars2.githubusercontent.com/u/18607604?v=3&s=200">
+
     <script id="article-template" type="text/x-handlebars-template">
       <article class="clearfix" data-author="{{author}}" data-category="{{category}}">
         <header>
@@ -23,9 +24,11 @@
         <a href="/article/{{id}}" class="read-on">Read on &rarr;</a>
       </article>
     </script>
+
     <script id="author-template" type="text/x-handlebars-template">
       <li><strong>{{name}}</strong>: {{numWords}} words written</li>
     </script>
+
     <script id="repo-template" type="text/x-handlebars-template">
       <li>
         <a href="{{html_url}}" target="_blank"><h3>{{name}}</h3></a>
@@ -38,9 +41,11 @@
         {{/if}}
       </li>
     </script>
+
     <script id="option-template" type="text/x-handlebars-templage">
       <option value="{{val}}">{{val}}</option>
     </script>
+
   </head>
   <body>
     <header class="site-header clearfix">
