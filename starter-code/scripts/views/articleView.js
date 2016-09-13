@@ -16,9 +16,14 @@
   };
 
   // COMMENT: What does this method do?  What is it's execution path?
+
+  // JOHN: We're maping over both the authors and category arrays and
+  // returning the current value of both arrays to the handlebar template
+  // which is then appended to the DOM
   articleView.populateFilters = function() {
     var options;
     var template = Handlebars.compile($('#option-template').text());
+
     options = Article.allAuthors()
       .map(function(author) {
         return template({val: author});
@@ -35,6 +40,10 @@
   };
 
   // COMMENT: What does this method do?  What is it's execution path?
+
+  // JOHN: We're grabing the filters element and specifying the event handler
+  // to run a callback function which removes text from the current id
+  // and then runs a page call
   articleView.handleFilters = function() {
     $('#filters').one('change', 'select', function() {
       var resource = this.id.replace('-filter', '');
@@ -84,6 +93,13 @@
    }; */
 
   // COMMENT: What does this method do?  What is it's execution path?
+
+  // JOHN: We're showing the main aritcles section but then hiding it's
+  // siblings. After which we're removing any current article and appending
+  // all new ones from the articles array. We're then populating all
+  // all the filters and running the method described above. And then we're
+  // we're setting a teaser method which hides text for all articles if
+  // there's more than one article rendered to the DOM
   articleView.index = function(articles) {
     $('#articles').show().siblings().hide();
 
